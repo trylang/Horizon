@@ -82,7 +82,7 @@ AI_PROVIDER_DEFAULTS = {
         "api_key_env": "DOUBAO_API_KEY",
     },
     AIProvider.MINIMAX: {
-        "model": "MiniMax-Text-01",
+        "model": "MiniMax-M2.5",
         "api_key_env": "MINIMAX_API_KEY",
     },
     AIProvider.DEEPSEEK: {
@@ -101,7 +101,7 @@ class AIConfig(BaseModel):
 
     provider: AIProvider
     provider_chain: Optional[str] = None
-    model: str
+    model: str  # Model for scoring/analysis (M2.5 for cost efficiency)
     base_url: Optional[str] = None
     api_key_env: str
     temperature: float = 0.3
@@ -110,6 +110,8 @@ class AIConfig(BaseModel):
     analysis_concurrency: int = 1
     enrichment_concurrency: int = 1
     languages: List[str] = Field(default_factory=lambda: ["en"])
+    # Separate model for enrichment/deep explanation (M2.7 for better quality)
+    enrichment_model: Optional[str] = None
     # Azure OpenAI specific; required when provider == AZURE
     azure_endpoint_env: Optional[str] = None
     api_version: Optional[str] = None

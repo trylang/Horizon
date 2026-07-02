@@ -681,7 +681,15 @@ class HorizonOrchestrator:
             return
 
         self.console.print("📚 Enriching with background knowledge...")
-        ai_client = create_ai_client(self.config.ai)
+
+        # Use enrichment_model if specified, otherwise fall back to main model
+        if self.config.ai.enrichment_model:
+            enrich_config = self.config.ai.model_copy()
+            enrich_config.model = self.config.ai.enrichment_model
+            ai_client = create_ai_client(enrich_config)
+        else:
+            ai_client = create_ai_client(self.config.ai)
+
         enricher = ContentEnricher(ai_client)
         await enricher.enrich_batch(items)
         self.console.print(f"   Enriched {len(items)} items\n")

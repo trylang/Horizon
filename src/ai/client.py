@@ -179,7 +179,7 @@ class OpenAIClient(AIClient):
         "ali": "https://dashscope.aliyuncs.com/compatible-mode/v1",
         "deepseek": "https://api.deepseek.com",
         "doubao": "https://ark.cn-beijing.volces.com/api/v3",
-        "minimax": "https://api.minimax.io/v1",
+        "minimax": "https://api.minimaxi.com/v1",
         "ollama": "http://localhost:11434/v1",
     }
 

@@ -39,7 +39,8 @@ ENV/
 # Data files (keep structure, ignore content)
 data/config.json
 data/seen.json
-data/summaries/*.md
+# Track summaries for persistence across server restarts
+data/summaries/
 data/subscribers.json
 data/mcp.secrets.json
 data/mcp-secrets.json
