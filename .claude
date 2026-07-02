@@ -1,0 +1,25 @@
+# SSH 配置
+# 使用 `ssh openclaw` 连接远程服务器
+
+# MCP 服务器配置（用于服务器上测试）
+mcp_servers:
+  # SSH 服务器配置
+  openclaw:
+    host: openclaw
+    description: "OpenClaw 远程服务器 - Horizon 项目测试环境"
+    remote_workdir: ~/Horizon
+
+# 工作流程设置
+workflow:
+  # 当需要测试/运行服务器端任务时使用 SSH
+  use_ssh_when: ["运行", "测试", "部署", "server", "远程"]
+
+  # GitHub 数据持久化
+  commit_after_work: true
+  auto_push: true
+
+# 用户偏好
+preferences:
+  # 不再询问已记录的配置
+  skip_confirmation_for_recorded_ssh: true
+  skip_confirmation_for_recorded_workflow: true
